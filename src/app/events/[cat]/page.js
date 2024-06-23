@@ -4,14 +4,12 @@ import Link from "next/link";
 
 async function getData() {
   const { allEvents } = await import("../../../data/data.json");
-  // console.log("Check my Data", events_categories);
   return allEvents;
 }
 
 const EventsPerCat = async ({ params }) => {
   const allEventData = await getData();
   const data = await allEventData.filter((ev) => ev.city === params.cat);
-  // console.log("params", data);
 
   return (
     <div className="flex flex-col items-center flex-wrap justify-center m-[10px]">
@@ -51,7 +49,7 @@ export async function getStaticPaths() {
       },
     };
   });
-  // console.log("allPaths", allPaths);
+
   return {
     paths: allPaths,
     fallback: false,
